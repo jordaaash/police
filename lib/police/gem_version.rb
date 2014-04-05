@@ -1,6 +1,6 @@
 require 'rubygems/version'
 
-module RailsUtils
+module Police
   # Returns the version of the currently loaded Police as a <tt>Gem::Version</tt>
   def self.gem_version
     Gem::Version.new VERSION::STRING
