@@ -103,11 +103,11 @@ module Police
 
   def get_model_class (model)
     case
-    when model.respond_to? :model_name
+    when model.respond_to?(:model_name)
       model.model_name.to_s.constantize
-    when model.is_a? Class
+    when model.is_a?(Class)
       model
-    when model.class.respond_to? :model_name
+    when model.class.respond_to?(:model_name)
       model.class.model_name.to_s.constantize
     else
       model.class
