@@ -10,8 +10,8 @@ module Police
         :user_method => :current_user,
         :user_class  => 'User'
       }.merge!(options)
-      user_method = options.delete(:user_method)
-      user_class  = options.delete(:user_class)
+      user_method = options.delete :user_method
+      user_class  = options.delete :user_class
 
       include Police
       include InstanceMethods
@@ -47,7 +47,7 @@ module Police
         if @police_user
           @police_user
         else
-          unless (police_user = send(police_user_method))
+          unless (police_user = send police_user_method)
             police_user = police_user_class && police_user_class.new
           end
           @police_user = police_user

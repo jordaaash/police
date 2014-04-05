@@ -2,6 +2,7 @@ require 'police/version'
 require 'police/errors'
 require 'active_support/dependencies/autoload'
 require 'active_support/inflector'
+require 'set'
 
 module Police
   extend ActiveSupport::Autoload
@@ -34,8 +35,8 @@ module Police
   def authorize! (user, action, *models)
     policy = get_policy(user, *models)
     method = :"#{action}?"
-    raise NotDefined unless policy.respond_to?(method)
-    raise NotAuthorized unless policy.public_send(method)
+    raise NotDefined unless policy.respond_to? method
+    raise NotAuthorized unless policy.public_send method
     policy
   end
 
@@ -102,11 +103,11 @@ module Police
 
   def get_model_class (model)
     case
-    when model.respond_to?(:model_name)
+    when model.respond_to? :model_name
       model.model_name.to_s.constantize
-    when model.is_a?(Class)
+    when model.is_a? Class
       model
-    when model.class.respond_to?(:model_name)
+    when model.class.respond_to? :model_name
       model.class.model_name.to_s.constantize
     else
       model.class
