@@ -1,5 +1,6 @@
 require 'police'
 require 'police/errors'
+require 'active_support/core_ext/string/inflections'
 require 'active_support/core_ext/class/attribute'
 require 'action_controller/base'
 
@@ -20,27 +21,21 @@ module Police
       self.police_user_method = user_method
       self.police_user_class  = user_class
 
-      helper_method :police_user, :can?, :owner?
+      hide_action :model_base_classes, :policies, :policy_class, :model_class
+      helper_method :police!, :police?, :authorize!, :authorized?, :can?,
+                    :cannot?, :owner?, :policy
       before_action :police!, options, &block
     end
 
     module InstanceMethods
-      private
-
-      def can? (action, *models)
-        super(police_user, action, *models)
-      end
-
-      def owner? (*models)
-        super(police_user, *models)
-      end
-
-      def policed_scope (*models)
-        super(police_user, *models)
-      end
-
-      def policed_find (*models, ids)
-        super(police_user, *models, ids)
+      def authorize! (user, action, *models)
+        if user.nil?
+          user = police_user
+        elsif user.is_a?(Symbol) || user.is_a?(String)
+          models.unshift(action)
+          user, action = police_user, user
+        end
+        super
       end
 
       def police_user
@@ -48,7 +43,11 @@ module Police
           @police_user
         else
           unless (police_user = send police_user_method)
-            police_user = police_user_class && police_user_class.new
+            user_class = police_user_class
+            if user_class
+              user_class = user_class.constantize if user_class.is_a?(String)
+              police_user = user_class.new
+            end
           end
           @police_user = police_user
         end

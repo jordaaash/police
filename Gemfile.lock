@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/jordansexton/ruby_utils.git
+  revision: 9ad02eb1920e19262a5a6abac736ff2b83344162
+  specs:
+    ruby_utils (0.1.0.alpha)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -24,7 +30,6 @@ GEM
       tzinfo (~> 0.3.37)
     addressable (2.3.6)
     arel (4.0.2)
-    atomic (1.1.16)
     builder (3.1.4)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
@@ -76,6 +81,7 @@ GEM
     rake (10.2.2)
     rdoc (3.12.2)
       json (~> 1.4)
+    ref (1.0.5)
     rspec (2.8.0)
       rspec-core (~> 2.8.0)
       rspec-expectations (~> 2.8.0)
@@ -89,8 +95,7 @@ GEM
       multi_json
       simplecov-html (~> 0.8.0)
     simplecov-html (0.8.0)
-    thread_safe (0.3.1)
-      atomic (>= 1.1.7, < 2)
+    thread_safe (0.3.2)
     tzinfo (0.3.39)
 
 PLATFORMS
@@ -103,5 +108,7 @@ DEPENDENCIES
   bundler (~> 1.0)
   jeweler (~> 2.0.1)
   rdoc (~> 3.12)
+  ref (~> 1.0.5)
   rspec (~> 2.8.0)
+  ruby_utils (= 0.1.0.alpha)!
   simplecov

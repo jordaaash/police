@@ -9,21 +9,13 @@ module Police
       @parent = parent
     end
 
+    # actions
+    can :read, -> { delegate? ? parent.read? : super }
+    can :write, -> { delegate? ? parent.write? : super }
+
     # helpers
     def delegate?
       false
-    end
-
-    def read?
-      delegate? ? parent.read? : super
-    end
-
-    def write?
-      delegate? ? parent.write? : super
-    end
-
-    def scope
-      delegate? ? parent.scope : super
     end
   end
 end
