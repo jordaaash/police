@@ -124,7 +124,7 @@ module Police
     end
 
     def find (*args)
-      all.find(*args)
+      klass.find(*args)
     end
 
     # helpers
