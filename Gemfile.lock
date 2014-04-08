@@ -1,9 +1,3 @@
-GIT
-  remote: git://github.com/jordansexton/ruby_utils.git
-  revision: 9ad02eb1920e19262a5a6abac736ff2b83344162
-  specs:
-    ruby_utils (0.1.0.alpha)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -47,7 +41,7 @@ GEM
       multi_json (>= 1.7.5, < 2.0)
       nokogiri (~> 1.6.0)
       oauth2
-    hashie (2.0.5)
+    hashie (2.1.0)
     highline (1.6.21)
     i18n (0.6.9)
     jeweler (2.0.1)
@@ -95,7 +89,7 @@ GEM
       multi_json
       simplecov-html (~> 0.8.0)
     simplecov-html (0.8.0)
-    thread_safe (0.3.2)
+    thread_safe (0.3.3)
     tzinfo (0.3.39)
 
 PLATFORMS
@@ -110,5 +104,4 @@ DEPENDENCIES
   rdoc (~> 3.12)
   ref (~> 1.0.5)
   rspec (~> 2.8.0)
-  ruby_utils (= 0.1.0.alpha)!
   simplecov
