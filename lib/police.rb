@@ -3,8 +3,6 @@ require 'police/errors'
 require 'active_support/dependencies/autoload'
 require 'active_support/inflector'
 require 'set'
-require 'ruby_utils/core_ext/kernel/require'
-require 'singleton'
 
 module Police
   extend ActiveSupport::Autoload
@@ -67,7 +65,7 @@ module Police
   end
 
   def policies (user = nil)
-    policies = (@policies ||= PolicyCache.instance)
+    policies = (@policies ||= {})
     user ? (policies[user] ||= {}) : policies
   end
 
@@ -97,10 +95,6 @@ module Police
     end
   rescue NameError
     raise NotDefined
-  end
-
-  class PolicyCache < (require?('ref/weak_key_map') ? Ref::WeakKeyMap : Hash)
-    include Singleton
   end
 
   def model_base_classes
