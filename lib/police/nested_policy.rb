@@ -10,8 +10,8 @@ module Police
     end
 
     # actions
-    can :read, -> { delegate? ? parent.read? : super }
-    can :write, -> { delegate? ? parent.write? : super }
+    can :read, -> { delegate? ? parent.read? : super() }
+    can :write, -> { delegate? ? parent.write? : super() }
 
     # helpers
     def delegate?
