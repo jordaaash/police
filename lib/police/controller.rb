@@ -27,7 +27,7 @@ module Police
         end                               # end
       RUBY_EVAL
 
-      hide_action :model_base_classes, :policies, :policy_class, :model_class
+      hide_action   :model_base_classes, :policies, :policy_class, :model_class
       helper_method :police!, :police?, :authorize!, :authorized?, :can?,
                     :cannot?, :owner?, :policy
       before_action :police!, options, &block
