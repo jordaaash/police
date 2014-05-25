@@ -6,8 +6,8 @@ module Police
   module Controller
     def police (options = {}, &block)
       options    = {
-        :user       => :current_user,
-        :user_class => 'User'
+        user:       :current_user,
+        user_class: 'User'
       }.merge!(options)
       user       = options.delete :user
       user_class = options.delete :user_class
