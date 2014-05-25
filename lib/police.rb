@@ -1,14 +1,12 @@
 require 'police/version'
 require 'police/errors'
-require 'active_support/dependencies/autoload'
-require 'active_support/inflector'
+require 'active_support/core_ext/string/inflections'
 require 'set'
 
 module Police
-  extend ActiveSupport::Autoload
-
-  autoload :Policy
-  autoload :NestedPolicy
+  autoload :Policy,       'police/policy'
+  autoload :NestedPolicy, 'police/nested_policy'
+  autoload :Controller,   'police/controller'
 
   def police!
     raise NotAuthorized

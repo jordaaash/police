@@ -1,5 +1,3 @@
-require 'police/policy'
-
 module Police
   class NestedPolicy < Policy
     attr_reader :parent

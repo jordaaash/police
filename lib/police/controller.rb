@@ -1,5 +1,3 @@
-require 'police'
-require 'police/errors'
 require 'active_support/core_ext/string/inflections'
 require 'active_support/core_ext/class/attribute'
 require 'action_controller/base'

@@ -1,7 +1,10 @@
 module Police
-  class NotAuthorized < StandardError
+  class PoliceError < StandardError
   end
 
-  class NotDefined < StandardError
+  class NotAuthorized < PoliceError
+  end
+
+  class NotDefined < PoliceError
   end
 end
