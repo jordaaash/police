@@ -14,13 +14,13 @@ require 'rake'
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://guides.rubygems.org/specification-reference/ for more options
-  gem.name = 'police'
-  gem.homepage = 'http://github.com/jordansexton/police'
-  gem.license = 'MIT'
-  gem.summary = 'Simple authorization for Rails and non-Rails applications.'
+  gem.name        = 'police'
+  gem.homepage    = 'http://github.com/jordansexton/police'
+  gem.license     = 'MIT'
+  gem.summary     = 'Simple authorization for Rails and non-Rails applications.'
   gem.description = 'Simple authorization for Rails and non-Rails applications.'
-  gem.email = 'jordan@jordansexton.com'
-  gem.authors = ['Jordan Sexton']
+  gem.email       = 'jordan@jordansexton.com'
+  gem.authors     = ['Jordan Sexton']
   # dependencies defined in Gemfile
 end
 # Jeweler::RubygemsDotOrgTasks.new
@@ -44,7 +44,7 @@ Rake::RDocTask.new do |rdoc|
   version = File.exist?('VERSION') ? File.read('VERSION') : ''
 
   rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "police #{version}"
+  rdoc.title    = "police #{version}"
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
