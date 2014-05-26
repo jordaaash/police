@@ -45,8 +45,8 @@ module Police
                     raise ArgumentError, 'Invalid permission provided'
                   end
         end
-        block = -> { !instance_exec &block } unless condition
-        Array.wrap(actions).each { |action| define_method :"#{action}?", &block }
+        block = -> { !instance_exec(&block) } unless condition
+        Array.wrap(actions).each { |action| define_method(:"#{action}?", &block) }
       end
     end
 

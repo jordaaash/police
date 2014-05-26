@@ -9,13 +9,13 @@ module Police
         user:       :current_user,
         user_class: 'User'
       }.merge!(options)
-      user       = options.delete :user
-      user_class = options.delete :user_class
+      user       = options.delete(:user)
+      user_class = options.delete(:user_class)
 
       police_user = []
-      police_user << "#{user}" if user
+      police_user << "#{user}"           if user
       police_user << "#{user_class}.new" if user_class
-      police_user << 'nil' if police_user.empty?
+      police_user << 'nil'               if police_user.empty?
       police_user = police_user.compact.join(' || ')
 
       include Police
@@ -47,4 +47,4 @@ module Police
   end
 end
 
-ActionController::Base.send :extend, Police::Controller
+ActionController::Base.send(:extend, Police::Controller)

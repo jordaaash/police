@@ -21,8 +21,8 @@ module Police
   def authorize! (user, action, *models)
     policy = self.policy(user, *models)
     method = :"#{action}?"
-    raise NotDefined unless policy.respond_to? method
-    raise NotAuthorized unless policy.public_send method
+    raise NotDefined    unless policy.respond_to?(method)
+    raise NotAuthorized unless policy.public_send(method)
     policy
   end
 
