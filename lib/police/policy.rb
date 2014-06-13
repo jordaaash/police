@@ -32,18 +32,18 @@ module Police
       alias_method :deny, :can
 
       def permit (actions, permission = nil, condition = true, &block)
-        unless block
-          block = if permission.nil? || permission == true
-                    -> { true }
-                  elsif !permission
-                    -> { false }
-                  elsif permission.is_a?(Symbol)
-                    -> { public_send(:"#{permission}?") }
-                  elsif permission.respond_to?(:call)
-                    permission
-                  else
-                    raise ArgumentError, 'Invalid permission provided'
-                  end
+        # Can't use a case statement here because permission can be a Proc and case evaluates with ===
+        # http://www.ruby-doc.org/core-2.0/Proc.html#method-i-3D-3D-3D
+        block ||= if permission.nil? || permission == true
+          -> { true }
+        elsif !permission
+          -> { false }
+        elsif permission.is_a?(Symbol)
+          -> { public_send(:"#{permission}?") }
+        elsif permission.is_a?(Proc)
+          permission
+        else
+          raise ArgumentError, 'Invalid permission provided'
         end
         block = -> { !instance_exec(&block) } unless condition
         Array.wrap(actions).each { |action| define_method(:"#{action}?", &block) }
