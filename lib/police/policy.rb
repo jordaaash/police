@@ -36,7 +36,7 @@ module Police
         # http://www.ruby-doc.org/core-2.0/Proc.html#method-i-3D-3D-3D
         block ||= if permission.nil? || permission == true
           -> { true }
-        elsif !permission
+        elsif permission == false
           -> { false }
         elsif permission.is_a?(Symbol)
           -> { public_send(:"#{permission}?") }
